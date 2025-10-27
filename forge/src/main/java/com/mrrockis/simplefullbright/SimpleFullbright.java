@@ -12,10 +12,6 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 @Mod(Constants.MOD_ID)
 public class SimpleFullbright {
     public SimpleFullbright() {
-        // Use Forge to bootstrap the Common mod.
-        Constants.LOG.info("Hello Forge world!");
-        CommonClass.init();
-
         if (FMLEnvironment.dist == Dist.CLIENT) {
             MinecraftForge.EVENT_BUS.register(this);
         }

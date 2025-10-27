@@ -1,9 +1,6 @@
 package com.mrrockis.simplefullbright;
 
-import com.mrrockis.simplefullbright.platform.Services;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Items;
 
 public class CommonClass {
 
@@ -11,17 +8,6 @@ public class CommonClass {
 
     private static double gamma = 1.0;
     private static double originalGamma = -1;
-
-    public static void init() {
-
-        Constants.LOG.info("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
-        Constants.LOG.info("The ID for diamonds is {}", BuiltInRegistries.ITEM.getKey(Items.DIAMOND));
-
-        if (Services.PLATFORM.isModLoaded("simplefullbright")) {
-
-            Constants.LOG.info("Hello to Simple Fullbright");
-        }
-    }
 
     public static boolean isFullbrightEnabled() {
         return fullbrightEnabled;

@@ -7,9 +7,8 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 public class SimpleFullbright implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        CommonClass.init();
-
         KeyBindingHelper.registerKeyBinding(Constants.TOGGLE_KEY);
+        Constants.LOG.info("Registered Keybinds for " + Constants.MOD_ID);
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player != null) {

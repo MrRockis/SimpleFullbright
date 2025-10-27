@@ -12,10 +12,6 @@ import net.neoforged.neoforge.common.NeoForge;
 @Mod(Constants.MOD_ID)
 public class SimpleFullbright {
     public SimpleFullbright(IEventBus eventBus, Dist dist) {
-        // Use NeoForge to bootstrap the Common mod.
-        Constants.LOG.info("Hello NeoForge world!");
-        CommonClass.init();
-
         if (dist.isClient()) {
             eventBus.addListener(this::onRegisterKeybinds);
             NeoForge.EVENT_BUS.register(this);
