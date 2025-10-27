@@ -1,18 +1,20 @@
 package com.mrrockis.simplefullbright;
 
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 
-public class SimpleFullbright implements ModInitializer {
-    
+public class SimpleFullbright implements ClientModInitializer {
     @Override
-    public void onInitialize() {
-        
-        // This method is invoked by the Fabric mod loader when it is ready
-        // to load your mod. You can access Fabric and Common code in this
-        // project.
-
-        // Use Fabric to bootstrap the Common mod.
-        Constants.LOG.info("Hello Fabric world!");
+    public void onInitializeClient() {
         CommonClass.init();
+
+        KeyBindingHelper.registerKeyBinding(Constants.TOGGLE_KEY);
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (client.player != null) {
+                CommonClass.handleKeyInput(client);
+            }
+        });
     }
 }
