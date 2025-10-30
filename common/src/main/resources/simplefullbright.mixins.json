@@ -6,11 +6,11 @@
   "compatibilityLevel": "JAVA_18",
   "mixins": [],
   "client": [
-    "MixinMinecraft"
+    "MixinMinecraft",
+    "MixinOptions"
   ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
   }
 }
-
