@@ -4,9 +4,7 @@
   "package": "com.mrrockis.simplefullbright.mixin",
   "compatibilityLevel": "JAVA_18",
   "mixins": [],
-  "client": [
-    "LightTextureMixin"
-  ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1
