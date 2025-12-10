@@ -39,6 +39,11 @@ public class CommonClass {
             sendActionBar(client, "Gamma: " + getGammaPercentage(client) + "%");
         } else {
             // Restore original gamma
+            // Check if original gamma is maxed out
+            if(originalGamma >= CommonClass.getHighGamma()) {
+                originalGamma = 1.0;
+            }
+
             client.options.gamma().set(originalGamma);
             sendActionBar(client, "Gamma: " + getGammaPercentage(client) + "%");
         }
