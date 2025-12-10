@@ -1,7 +1,9 @@
 package com.mrrockis.simplefullbright.mixin;
 
 import com.mrrockis.simplefullbright.CommonClass;
+import com.mrrockis.simplefullbright.Config;
 import com.mrrockis.simplefullbright.Constants;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
 import net.minecraft.network.chat.Component;
@@ -23,8 +25,14 @@ public class MixinOptions {
     @Mutable
     private OptionInstance<Double> gamma;
 
+    @Shadow
+    protected Minecraft minecraft;
+
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onConstruct(CallbackInfo ci) {
+        // Load the saved gamma value from config
+        Config.load();
+
         try {
             double highGamma = CommonClass.getHighGamma();
 
@@ -34,7 +42,7 @@ public class MixinOptions {
             );
 
             OptionInstance.CaptionBasedToString<Double> caption = (captionComponent, val) -> {
-                int i = (int)(val * 100.0);
+                int i = (int) (val * 100.0);
                 if (i == 0) {
                     return Component.translatable("options.gamma.min");
                 } else if (i == 50) {
@@ -43,8 +51,7 @@ public class MixinOptions {
                     return Component.translatable("options.gamma.max");
                 } else if (i == (CommonClass.getHighGamma() * 100)) {
                     return Component.literal("Fullbright");
-                }
-                else {
+                } else {
                     return Component.literal(i + "%");
                 }
             };
@@ -65,17 +72,24 @@ public class MixinOptions {
             }
 
             target.setAccessible(true);
+
+            Consumer<Double> onGammaChange = (newValue) -> {
+                Config.gammaValue = newValue;
+                Config.save();
+            };
+
             Object instance = target.newInstance(
-                "options.gamma",
-                OptionInstance.noTooltip(),
-                caption,
-                extended,
-                0.5d,
-                (Consumer<Double>)(d -> {})
+                    "options.gamma",
+                    OptionInstance.noTooltip(),
+                    caption,
+                    extended,
+                    Config.gammaValue,
+                    onGammaChange
             );
 
             this.gamma = (OptionInstance<Double>) instance;
             Constants.LOG.info("Replaced Options.gamma with extended range (up to " + (highGamma * 100) + "%).");
+            Constants.LOG.info("Gamma set to: " + (Config.gammaValue * 100) + "%");
         } catch (Throwable t) {
             Constants.LOG.warn("Failed to replace gamma option for extended range", t);
         }

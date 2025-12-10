@@ -14,7 +14,7 @@ public class CommonClass {
     }
 
     public static int getGammaPercentage(Minecraft client) {
-        return (int)(client.options.gamma().get() * 100);
+        return (int) (client.options.gamma().get() * 100);
     }
 
     public static float getHighGamma() {
@@ -42,10 +42,12 @@ public class CommonClass {
             client.options.gamma().set(originalGamma);
             sendActionBar(client, "Gamma: " + getGammaPercentage(client) + "%");
         }
+
+        Config.save();
     }
 
     public static void sendActionBar(Minecraft client, String message) {
-        if(client.player != null) {
+        if (client.player != null) {
             client.player.displayClientMessage(Component.literal(message).withStyle(ChatFormatting.GOLD), true);
         }
     }
