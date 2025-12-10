@@ -89,7 +89,12 @@ public class MixinOptions {
 
             this.gamma = (OptionInstance<Double>) instance;
             Constants.LOG.info("Replaced Options.gamma with extended range (up to " + (highGamma * 100) + "%).");
-            Constants.LOG.info("Gamma set to: " + (Config.gammaValue * 100) + "%");
+
+            if(Config.gammaValue >= CommonClass.getHighGamma()) {
+                CommonClass.setFullbrightEnabled(true);
+            }
+
+            Constants.LOG.info("Gamma set to: " + (Config.gammaValue * 100) + "%, Fullbright enabled: " + CommonClass.isFullbrightEnabled());
         } catch (Throwable t) {
             Constants.LOG.warn("Failed to replace gamma option for extended range", t);
         }

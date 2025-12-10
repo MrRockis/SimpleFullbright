@@ -5,12 +5,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 
 public class CommonClass {
-
     private static boolean fullbrightEnabled = false;
     private static double originalGamma = 1.0;
 
     public static boolean isFullbrightEnabled() {
         return fullbrightEnabled;
+    }
+
+    public static void setFullbrightEnabled(boolean value) {
+        fullbrightEnabled = value;
     }
 
     public static int getGammaPercentage(Minecraft client) {
