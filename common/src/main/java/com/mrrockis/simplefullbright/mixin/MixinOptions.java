@@ -76,6 +76,8 @@ public class MixinOptions {
             Consumer<Double> onGammaChange = (newValue) -> {
                 Config.gammaValue = newValue;
                 Config.save();
+
+                CommonClass.setFullbrightEnabled(Config.gammaValue >= CommonClass.getHighGamma());
             };
 
             Object instance = target.newInstance(
