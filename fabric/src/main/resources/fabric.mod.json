@@ -17,6 +17,9 @@
   "entrypoints": {
     "client": [
       "com.mrrockis.simplefullbright.SimpleFullbright"
+    ],
+    "sodium:config_api_user": [
+      "com.mrrockis.simplefullbright.compat.SodiumConfigBuilder"
     ]
   },
   "mixins": [
@@ -30,7 +33,7 @@
     "java": ">=${java_version}"
   },
   "suggests": {
-    "another-mod": "*"
+    "sodium": ">=${sodium_version}"
   }
 }
   
