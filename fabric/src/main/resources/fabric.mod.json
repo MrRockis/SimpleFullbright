@@ -12,7 +12,7 @@
     "sources": "https://github.com/MrRockis/SimpleFullbright/"
   },
   "license": "${license}",
-  "icon": "${mod_id}.png",
+  "icon": "assets/${mod_id}/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
