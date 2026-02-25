@@ -1,4 +1,4 @@
-package com.example.examplemod.platform.services;
+package com.mrrockis.simplefullbright.platform.services;
 
 public interface IPlatformHelper {
 
@@ -23,4 +23,14 @@ public interface IPlatformHelper {
      * @return True if in a development environment, false otherwise.
      */
     boolean isDevelopmentEnvironment();
+
+    /**
+     * Gets the name of the environment type as a string.
+     *
+     * @return The name of the environment type.
+     */
+    default String getEnvironmentName() {
+
+        return isDevelopmentEnvironment() ? "development" : "production";
+    }
 }

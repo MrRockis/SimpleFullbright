@@ -1,6 +1,6 @@
-package com.example.examplemod.platform;
+package com.mrrockis.simplefullbright.platform;
 
-import com.example.examplemod.platform.services.IPlatformHelper;
+import com.mrrockis.simplefullbright.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class FabricPlatformHelper implements IPlatformHelper {

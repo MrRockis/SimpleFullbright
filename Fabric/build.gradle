@@ -8,7 +8,7 @@ version = version
 group = group
 
 base {
-    archivesName = "${mod_name}-fabric-${minecraft_version}"
+    archivesName = "${mod_id}-fabric-${minecraft_version}"
 }
 
 dependencies {
@@ -21,6 +21,9 @@ dependencies {
 }
 
 loom {
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
     runs {
         client {
             client()

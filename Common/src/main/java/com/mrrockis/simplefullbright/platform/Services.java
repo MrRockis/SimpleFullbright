@@ -1,7 +1,7 @@
-package com.example.examplemod.platform;
+package com.mrrockis.simplefullbright.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import com.mrrockis.simplefullbright.Constants;
+import com.mrrockis.simplefullbright.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
 
