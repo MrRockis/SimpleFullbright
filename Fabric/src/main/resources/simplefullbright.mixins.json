@@ -2,12 +2,9 @@
     "required": true,
     "minVersion": "0.8",
     "package": "com.mrrockis.simplefullbright.mixin",
-    "compatibilityLevel": "JAVA_17",
-    "mixins": [
-    ],
-    "client": [
-        "MixinOptions"
-    ],
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [],
+    "client": [],
     "injectors": {
       "defaultRequire": 1
     }

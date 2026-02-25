@@ -2,7 +2,7 @@ package com.mrrockis.simplefullbright;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 
 public class CommonClass {
     private static boolean fullbrightEnabled = false;
@@ -17,7 +17,7 @@ public class CommonClass {
     }
 
     public static int getGammaPercentage(Minecraft client) {
-        return (int) (client.options.gamma().get() * 100);
+        return (int) (client.options.gamma * 100);
     }
 
     public static float getHighGamma() {
@@ -36,9 +36,9 @@ public class CommonClass {
 
         if (isFullbrightEnabled()) {
             // Store original gamma
-            originalGamma = client.options.gamma().get();
+            originalGamma = client.options.gamma;
 
-            client.options.gamma().set((double) CommonClass.getHighGamma());
+            client.options.gamma = CommonClass.getHighGamma();
             sendActionBar(client, "Gamma: " + getGammaPercentage(client) + "%");
         } else {
             // Restore original gamma
@@ -47,7 +47,7 @@ public class CommonClass {
                 originalGamma = 1.0;
             }
 
-            client.options.gamma().set(originalGamma);
+            client.options.gamma = originalGamma;
             sendActionBar(client, "Gamma: " + getGammaPercentage(client) + "%");
         }
 
@@ -56,7 +56,7 @@ public class CommonClass {
 
     public static void sendActionBar(Minecraft client, String message) {
         if (client.player != null) {
-            client.player.displayClientMessage(Component.literal(message).withStyle(ChatFormatting.GOLD), true);
+            client.player.displayClientMessage(new TextComponent(message).withStyle(ChatFormatting.GOLD), true);
         }
     }
 }
