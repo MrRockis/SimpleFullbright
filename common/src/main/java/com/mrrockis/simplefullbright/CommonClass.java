@@ -56,7 +56,7 @@ public class CommonClass {
 
     public static void sendActionBar(Minecraft client, String message) {
         if (client.player != null) {
-            client.player.displayClientMessage(Component.literal(message).withStyle(ChatFormatting.GOLD), true);
+            client.player.sendOverlayMessage(Component.literal(message).withStyle(ChatFormatting.GOLD));
         }
     }
 }
