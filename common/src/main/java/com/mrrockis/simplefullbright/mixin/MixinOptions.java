@@ -73,7 +73,7 @@ public class MixinOptions {
 
             target.setAccessible(true);
 
-            Consumer<Double> onGammaChange = (newValue) -> {
+            OptionInstance.ValueUpdateListener<Double> onGammaChange = (newValue) -> {
                 Config.gammaValue = newValue;
                 Config.save();
 
